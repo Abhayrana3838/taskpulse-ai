@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 import os
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./taskpulse.db")
+DATABASE_URL = os.getenv("DATABASE_URL") or "sqlite:///./taskpulse.db"
 
 # PostgreSQL check - if using Postgres, don't use SQLite-specific args
 if DATABASE_URL.startswith("postgresql"):
