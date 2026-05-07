@@ -10,8 +10,7 @@ nixPkgs = [
 
 [phases.build]
 cmds = [
-  "cd backend && pip install --upgrade pip",
-  "cd backend && pip install -r requirements.txt"
+  "cd backend && pip install -r requirements.txt --break-system-packages"
 ]
 
 [start]
