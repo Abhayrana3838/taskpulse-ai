@@ -4,7 +4,7 @@ cmds = [
 ]
 
 [phases.setup]
-nixPkgs = ["python311", "gcc", "openssl", "postgresql", "libpq"]
+nixPkgs = ["python311", "gcc", "openssl", "postgresql"]
 
 [start]
 cmd = "cd backend && python3 -m uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"
