@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up | TaskPulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#e60073",
+                        "outline": "#8b90a0",
+                        "surface-container-high": "#2a2a2a",
+                        "outline-variant": "#414754",
+                        "on-primary-fixed-variant": "#004397",
+                        "tertiary-fixed-dim": "#ffb1c5",
+                        "primary-fixed-dim": "#aec6ff",
+                        "on-primary-fixed": "#001a43",
+                        "surface-variant": "#353534",
+                        "surface-container": "#201f1f",
+                        "on-surface-variant": "#c1c6d7",
+                        "on-background": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#3a3939",
+                        "on-secondary": "#470083",
+                        "on-tertiary-fixed-variant": "#8f0045",
+                        "on-secondary-container": "#d0a6ff",
+                        "on-secondary-fixed-variant": "#6600b7",
+                        "secondary-fixed-dim": "#dbb8ff",
+                        "background": "#131313",
+                        "surface-tint": "#aec6ff",
+                        "error-container": "#93000a",
+                        "surface-dim": "#131313",
+                        "inverse-on-surface": "#313030",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#ffffff",
+                        "error": "#ffb4ab",
+                        "primary": "#aec6ff",
+                        "on-tertiary-fixed": "#3f001b",
+                        "secondary-container": "#6807ba",
+                        "on-tertiary": "#65002f",
+                        "secondary-fixed": "#efdbff",
+                        "surface": "#131313",
+                        "on-primary": "#002e6b",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-container": "#0070f3",
+                        "tertiary": "#ffb1c5",
+                        "tertiary-fixed": "#ffd9e1",
+                        "on-surface": "#e5e2e1",
+                        "secondary": "#dbb8ff",
+                        "inverse-primary": "#0059c5",
+                        "on-primary-container": "#ffffff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-secondary-fixed": "#2b0052"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xxl": "80px",
+                        "container-max": "1440px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "code": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "code": ["14px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card-border {
+            border: 1px solid transparent;
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)) padding-box,
+                        linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%) border-box;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #0070F3 0%, #6807ba 100%);
+        }
+        .primary-glow:hover {
+            box-shadow: 0 0 15px rgba(0, 112, 243, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen selection:bg-primary/30">
+<main class="flex flex-col md:flex-row min-h-screen">
+<!-- Left Side: Why TaskPulse? -->
+<section class="relative w-full md:w-1/2 flex items-center justify-center p-gutter lg:p-xxl bg-surface-container-lowest overflow-hidden">
+<!-- Decorative Elements -->
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px]"></div>
+<div class="relative z-10 max-w-lg w-full">
+<header class="mb-xxl">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary text-[32px]">bolt</span>
+<h1 class="font-label-caps text-headline-md tracking-tighter text-primary">TaskPulse</h1>
+</div>
+<h2 class="font-headline-lg text-display-xl mb-md">Engineered for <span class="text-primary">Performance.</span></h2>
+<p class="font-body-lg text-on-surface-variant max-w-md">The central nervous system for your team's most ambitious projects. Fast, fluid, and focused.</p>
+</header>
+<div class="space-y-lg">
+<!-- Feature: High-speed tasking -->
+<div class="flex items-start gap-lg p-lg rounded-xl glass-panel glass-card-border transition-all duration-300 hover:translate-x-2">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]">speed</span>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg mb-xs">High-speed tasking</h3>
+<p class="text-on-surface-variant font-body-md">Optimized workflows that move at the speed of thought. Zero friction, total control.</p>
+</div>
+</div>
+<!-- Feature: Team sync -->
+<div class="flex items-start gap-lg p-lg rounded-xl glass-panel glass-card-border transition-all duration-300 hover:translate-x-2">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]">hub</span>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg mb-xs">Team sync</h3>
+<p class="text-on-surface-variant font-body-md">Real-time collaboration across timezones. Every update synced instantly across devices.</p>
+</div>
+</div>
+<!-- Feature: AI insights -->
+<div class="flex items-start gap-lg p-lg rounded-xl glass-panel glass-card-border transition-all duration-300 hover:translate-x-2">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]">psychology</span>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg mb-xs">AI insights</h3>
+<p class="text-on-surface-variant font-body-md">Predictive analytics that identify bottlenecks before they happen. Data-driven clarity.</p>
+</div>
+</div>
+</div>
+<div class="mt-xxl pt-lg">
+<img alt="TaskPulse Dashboard Visualization" class="rounded-xl shadow-[0_40px_60px_-15px_rgba(0,0,0,0.5)] border border-white/5 opacity-80" data-alt="A cinematic, close-up shot of a high-tech project management dashboard displayed on a futuristic glass screen. The UI features elegant line graphs, vibrant neon data points in shades of primary blue and deep purple, and translucent modal windows. The lighting is moody and dark, reflecting an obsidian-themed minimalist workspace. Soft refractive light glints off the edges of the screen, creating a premium technological atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBloE9V36X_YzgWL4B1D_iW9LTbN4eMrL-MVClJCn80kWm06raL0j1fAlkEURq5MhQbs1TSBFH7AuPGBSxm2L5BK24zwwhklNTzvfwP54-vAPw-XrIBRY8TmkHPMBzvblzuCXcOrPzprZmiEPZj5o8WDYyNETbunOH8zCDaWaFJKyuGIQI3VqC3-zRRNJhUQm_V6mo8Xn5ZG-kyR8HMFzIjDYPdtPPHZSJoPuqx12SUK-nLs89bNJf6Iw5_rjsjMa_0uZrdrE-cV3U1"/>
+</div>
+</div>
+</section>
+<!-- Right Side: Signup Form -->
+<section class="w-full md:w-1/2 flex flex-col items-center justify-center p-gutter lg:p-xxl bg-background">
+<div class="w-full max-w-md">
+<div class="glass-panel glass-card-border p-xl rounded-xl shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg mb-xs">Start your 14-day trial</h2>
+<p class="font-body-md text-on-surface-variant">No credit card required. Cancel anytime.</p>
+</div>
+<form action="#" class="space-y-lg" method="POST">
+<!-- Name Field -->
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant text-[11px] uppercase tracking-widest" for="name">Full Name</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-body-md group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-xl py-md pl-12 text-on-surface placeholder:text-outline/50 transition-all focus:border-primary/50 focus:bg-surface-container-low" id="name" name="name" placeholder="John Doe" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant text-[11px] uppercase tracking-widest" for="email">Work Email</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-body-md group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-xl py-md pl-12 text-on-surface placeholder:text-outline/50 transition-all focus:border-primary/50 focus:bg-surface-container-low" id="email" name="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant text-[11px] uppercase tracking-widest" for="password">Password</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-body-md group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-xl py-md pl-12 text-on-surface placeholder:text-outline/50 transition-all focus:border-primary/50 focus:bg-surface-container-low" id="password" name="password" placeholder="••••••••" type="password"/>
+</div>
+<p class="text-[11px] text-outline pt-1">Must be at least 8 characters long.</p>
+</div>
+<!-- Submit Button -->
+<button class="w-full primary-gradient text-on-primary font-body-md font-bold py-md rounded-lg primary-glow transition-all duration-300 transform active:scale-[0.98] shadow-[0_10px_30px_-5px_rgba(0,112,243,0.4)] mt-lg" type="submit">
+                            Sign Up
+                        </button>
+</form>
+<div class="mt-xl flex items-center gap-md">
+<div class="h-[1px] flex-1 bg-white/5"></div>
+<span class="font-label-caps text-[10px] text-outline uppercase tracking-widest">Social Sign Up</span>
+<div class="h-[1px] flex-1 bg-white/5"></div>
+</div>
+<div class="mt-lg grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-sm bg-white/5 hover:bg-white/10 border border-white/5 py-md rounded-lg transition-colors">
+<img alt="Google Logo" class="w-5 h-5 grayscale opacity-70 group-hover:opacity-100" data-alt="The iconic Google logo with its four primary colors, rendered as a clean vector icon for social authentication integration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbrYV6lsE95S9wIVHnmgjqlFJFr-Dnx0-aXkd9rcmQcuASsSBecWaBYZdZKDIuMjdan1Kp_L7wDJAf78-MFmpR7ncj6Kfu8b_8ZsgErYeZeOZBDtOOUlm9rk_95q5FKjMS7ozHnV_MJ5sBq5RIALIhU2LrEQsypkpcCSUbPvn1kZ-4o24HtVjWBi8eoeB4iRfmXlV_DLXdCChOxfX4vdlv9k9OPOpzaVSVqheFLQDaPEGjVNpboZZmJz-LeGUc6r8wAtxX5EXPMV3Q"/>
+<span class="text-sm font-semibold">Google</span>
+</button>
+<button class="flex items-center justify-center gap-sm bg-white/5 hover:bg-white/10 border border-white/5 py-md rounded-lg transition-colors">
+<span class="material-symbols-outlined text-body-lg">work</span>
+<span class="text-sm font-semibold">SSO</span>
+</button>
+</div>
+</div>
+<!-- Footer: Redirect -->
+<footer class="mt-xl text-center">
+<p class="text-on-surface-variant font-body-md">
+                        Already have an account? 
+                        <a class="text-primary hover:text-primary-fixed-dim transition-colors font-semibold underline underline-offset-4" href="#">Log in</a>
+</p>
+</footer>
+</div>
+</section>
+</main>
+<!-- Global Footer for Legal -->
+<div class="bg-background py-lg px-gutter">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-[12px] text-outline-variant font-body-md">© 2024 TaskPulse AI. Built for high-performance teams.</p>
+<div class="flex gap-lg">
+<a class="text-[12px] text-outline-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-[12px] text-outline-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-[12px] text-outline-variant hover:text-primary transition-colors" href="#">Security</a>
+</div>
+</div>
+</div>
+</body></html>

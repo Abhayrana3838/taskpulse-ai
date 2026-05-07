@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TaskPulse | Premium Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(14, 14, 14, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .orb-glow {
+            background: radial-gradient(circle at center, #0070f3 0%, #6807ba 50%, transparent 70%);
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+        .input-focus-glow:focus-within {
+            box-shadow: 0 0 15px rgba(0, 112, 243, 0.2);
+            border-color: #aec6ff;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-container": "#e60073",
+                    "outline": "#8b90a0",
+                    "surface-container-high": "#2a2a2a",
+                    "outline-variant": "#414754",
+                    "on-primary-fixed-variant": "#004397",
+                    "tertiary-fixed-dim": "#ffb1c5",
+                    "primary-fixed-dim": "#aec6ff",
+                    "on-primary-fixed": "#001a43",
+                    "surface-variant": "#353534",
+                    "surface-container": "#201f1f",
+                    "on-surface-variant": "#c1c6d7",
+                    "on-background": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-bright": "#3a3939",
+                    "on-secondary": "#470083",
+                    "on-tertiary-fixed-variant": "#8f0045",
+                    "on-secondary-container": "#d0a6ff",
+                    "on-secondary-fixed-variant": "#6600b7",
+                    "secondary-fixed-dim": "#dbb8ff",
+                    "background": "#131313",
+                    "surface-tint": "#aec6ff",
+                    "error-container": "#93000a",
+                    "surface-dim": "#131313",
+                    "inverse-on-surface": "#313030",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#ffffff",
+                    "error": "#ffb4ab",
+                    "primary": "#aec6ff",
+                    "on-tertiary-fixed": "#3f001b",
+                    "secondary-container": "#6807ba",
+                    "on-tertiary": "#65002f",
+                    "secondary-fixed": "#efdbff",
+                    "surface": "#131313",
+                    "on-primary": "#002e6b",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-container": "#0070f3",
+                    "tertiary": "#ffb1c5",
+                    "tertiary-fixed": "#ffd9e1",
+                    "on-surface": "#e5e2e1",
+                    "secondary": "#dbb8ff",
+                    "inverse-primary": "#0059c5",
+                    "on-primary-container": "#ffffff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-secondary-fixed": "#2b0052"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "md": "16px",
+                    "xxl": "80px",
+                    "container-max": "1440px",
+                    "xl": "40px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-caps": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-xl": ["Inter"],
+                    "code": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "code": ["14px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<main class="flex h-screen w-full">
+<!-- Left Side: Ambient Visual Branding -->
+<section class="hidden lg:flex lg:w-1/2 relative items-center justify-center overflow-hidden bg-surface-container-lowest">
+<div class="absolute inset-0 z-0">
+<div class="orb-glow absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full"></div>
+<div class="orb-glow absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full opacity-30" style="background: radial-gradient(circle, #6807ba 0%, transparent 70%)"></div>
+</div>
+<div class="relative z-10 p-xxl text-left max-w-xl">
+<div class="mb-md">
+<span class="font-label-caps text-primary tracking-[0.3em] uppercase">TaskPulse AI</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-on-surface mb-lg">Architect your <span class="text-primary-container">workflow.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Experience the next generation of team collaboration. Precise, fast, and engineered for high-performance enterprise teams who demand the absolute best.
+                </p>
+<div class="mt-xxl grid grid-cols-2 gap-lg">
+<div class="p-lg glass-card rounded-xl">
+<span class="material-symbols-outlined text-primary mb-sm">bolt</span>
+<h3 class="font-headline-md text-body-md font-bold mb-xs">Ultra-Fast</h3>
+<p class="text-on-surface-variant text-sm">Optimized engine for sub-100ms response times.</p>
+</div>
+<div class="p-lg glass-card rounded-xl">
+<span class="material-symbols-outlined text-secondary mb-sm">security</span>
+<h3 class="font-headline-md text-body-md font-bold mb-xs">Enterprise Ready</h3>
+<p class="text-on-surface-variant text-sm">Military-grade encryption for all team data.</p>
+</div>
+</div>
+</div>
+<!-- Foreground Image Decoration -->
+<div class="absolute bottom-10 right-10 opacity-20 pointer-events-none">
+<img alt="Abstract tech background" class="w-96 h-96 object-contain" data-alt="Highly detailed 3D abstract render of translucent glass nodes connected by neon blue and purple filaments. The background is a void of deep obsidian black. Cinematic lighting creates sharp refractions and specular highlights on the glass surfaces. The mood is technologically advanced and premium. The aesthetic is futuristic, clean, and perfectly aligned with a high-end enterprise software brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhUv2G18VeYjOFunLfZhG3Q6lZ1x77rKQRmWu8GCZE1y4ieJUPA1Vpb3GSpeQXEcBujLipPCOZcman-DRfbMywL8ES_kE6wuTapEkZ_AUqsVdGc_RR4IkwEDR05u1sSrfAsMiUyJNfipxhiSU-f4K7Na_15NzygauogwaW-4okoPv40r7_uayHt1Mgda_Yqk8ljiudfYvDxYSN9puEfaEQXAug5Uy5-C_g-FH8Oby6pOLjn-gt7fSlUI4zT2fOJv-tRTkf_6KzYV-l"/>
+</div>
+</section>
+<!-- Right Side: Auth Form -->
+<section class="w-full lg:w-1/2 flex items-center justify-center px-gutter relative">
+<!-- Mobile visual background fallback -->
+<div class="lg:hidden absolute inset-0 z-0 overflow-hidden">
+<div class="orb-glow absolute top-0 right-0 w-[400px] h-[400px] rounded-full"></div>
+</div>
+<div class="w-full max-w-[440px] z-10">
+<div class="glass-card p-xl rounded-xl shadow-[0_40px_60px_-15px_rgba(0,0,0,0.5)]">
+<div class="text-center mb-xl">
+<h2 class="font-headline-lg text-headline-lg mb-xs">Welcome back</h2>
+<p class="text-on-surface-variant font-body-md">Enter your credentials to access TaskPulse</p>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-md mb-xl">
+<button class="flex items-center justify-center gap-sm p-md bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300 active:scale-95">
+<img alt="Google" class="w-5 h-5 grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuSEbicdR1KY_xM9k5n90bA1PqYSU4VkOFnkNpIUVlW9gOx0IP7bKIbG2bZRN2wnjndvfqDVYgOQD4U4YqK3oEznBfFDdoJxpBUSA72gtAE-1tU0dzXzqnzIDC0nhsFbW98A7ywJco5oVJrPHn1EawvvQOP5DTQqeu6-kCaDRPZVU8rDLvS58PMPKJ4SfPUA4m0-1HQim9v1qnkcX8kWStlHjCr_kR-PiI0Wq5piTcpVJluvVzLOIuQLEJIpZX9_Z9bL2HruQKoPf0"/>
+<span class="font-label-caps text-[10px]">Google</span>
+</button>
+<button class="flex items-center justify-center gap-sm p-md bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-[20px]">code</span>
+<span class="font-label-caps text-[10px]">GitHub</span>
+</button>
+</div>
+<div class="relative flex items-center mb-xl">
+<div class="flex-grow border-t border-white/5"></div>
+<span class="flex-shrink mx-4 text-on-surface-variant font-label-caps text-[10px]">OR CONTINUE WITH EMAIL</span>
+<div class="flex-grow border-t border-white/5"></div>
+</div>
+<!-- Login Form -->
+<form class="space-y-lg">
+<div class="space-y-xs">
+<label class="font-label-caps text-[10px] text-on-surface-variant block ml-1">WORK EMAIL</label>
+<div class="relative group input-focus-glow rounded-lg transition-all duration-300">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant">mail</span>
+<input class="w-full bg-[#050505] border border-white/10 rounded-lg py-md pl-[48px] pr-md text-on-surface focus:outline-none focus:ring-0 transition-all placeholder:text-outline-variant/50" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between items-center ml-1">
+<label class="font-label-caps text-[10px] text-on-surface-variant block">PASSWORD</label>
+<a class="text-[10px] font-label-caps text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative group input-focus-glow rounded-lg transition-all duration-300">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant">lock</span>
+<input class="w-full bg-[#050505] border border-white/10 rounded-lg py-md pl-[48px] pr-[48px] text-on-surface focus:outline-none focus:ring-0 transition-all placeholder:text-outline-variant/50" placeholder="••••••••" type="password"/>
+<button class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-outline-variant hover:text-on-surface transition-colors" type="button">
+                                    visibility
+                                </button>
+</div>
+</div>
+<div class="pt-md">
+<button class="w-full bg-gradient-to-r from-[#0070f3] to-[#6807ba] text-on-primary-container font-headline-md text-body-md py-md rounded-lg shadow-[0_0_15px_rgba(0,112,243,0.3)] hover:shadow-[0_0_25px_rgba(0,112,243,0.5)] transition-all duration-300 active:scale-98" type="submit">
+                                Sign In to TaskPulse
+                            </button>
+</div>
+</form>
+<div class="mt-xl text-center">
+<p class="text-on-surface-variant text-sm">
+                            Don't have an account? 
+                            <a class="text-primary font-bold hover:underline ml-1" href="#">Create account</a>
+</p>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="mt-lg flex justify-center gap-lg text-[10px] font-label-caps text-on-surface-variant opacity-60">
+<a class="hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-on-surface transition-colors" href="#">System Status</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Visual Polish: Noise Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[100]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCo90ssG2S_2I7qUmIZy6s8QKhlOmFBlpjWU0cKZzPFXx0kvKXG_gQke4x--nNdS17D8aaifjaubyKGSt9qxmT0q2GP6v8eWfnrE2hM1EgfnTe_P9ODysMo5i3HMXXWD3Y7FYtnDomoM8_9voR-ndnbruPz5weFSzWb92T63v3glwlEXE9wYzrcMPsaeoVJdiqnWs3xH9h573KGqizYIjyrIfpPRQ5EoHwc_3BHVb5MEaoQNQbaGCFVW4mWbdC7zcguP5mLn3PZNNLa');"></div>
+</body></html>

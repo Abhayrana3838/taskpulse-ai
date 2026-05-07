@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-container": "#e60073",
+                    "outline": "#8b90a0",
+                    "surface-container-high": "#2a2a2a",
+                    "outline-variant": "#414754",
+                    "on-primary-fixed-variant": "#004397",
+                    "tertiary-fixed-dim": "#ffb1c5",
+                    "primary-fixed-dim": "#aec6ff",
+                    "on-primary-fixed": "#001a43",
+                    "surface-variant": "#353534",
+                    "surface-container": "#201f1f",
+                    "on-surface-variant": "#c1c6d7",
+                    "on-background": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-bright": "#3a3939",
+                    "on-secondary": "#470083",
+                    "on-tertiary-fixed-variant": "#8f0045",
+                    "on-secondary-container": "#d0a6ff",
+                    "on-secondary-fixed-variant": "#6600b7",
+                    "secondary-fixed-dim": "#dbb8ff",
+                    "background": "#131313",
+                    "surface-tint": "#aec6ff",
+                    "error-container": "#93000a",
+                    "surface-dim": "#131313",
+                    "inverse-on-surface": "#313030",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#ffffff",
+                    "error": "#ffb4ab",
+                    "primary": "#aec6ff",
+                    "on-tertiary-fixed": "#3f001b",
+                    "secondary-container": "#6807ba",
+                    "on-tertiary": "#65002f",
+                    "secondary-fixed": "#efdbff",
+                    "surface": "#131313",
+                    "on-primary": "#002e6b",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-container": "#0070f3",
+                    "tertiary": "#ffb1c5",
+                    "tertiary-fixed": "#ffd9e1",
+                    "on-surface": "#e5e2e1",
+                    "secondary": "#dbb8ff",
+                    "inverse-primary": "#0059c5",
+                    "on-primary-container": "#ffffff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-secondary-fixed": "#2b0052"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "md": "16px",
+                    "xxl": "80px",
+                    "container-max": "1440px",
+                    "xl": "40px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-caps": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-xl": ["Inter"],
+                    "code": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "code": ["14px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 40px 60px -15px rgba(0,0,0,0.5);
+        }
+        .neon-accent {
+            background: linear-gradient(135deg, #0070f3, #6807ba);
+            box-shadow: 0 0 15px rgba(0, 112, 243, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-screen w-64 z-50 bg-surface-container-lowest/80 backdrop-blur-[20px] border-r border-white/5 flex flex-col h-full py-lg px-md shadow-[40px_0_60px_-15px_rgba(0,0,0,0.5)]">
+<div class="mb-xxl">
+<h1 class="font-label-caps text-headline-lg text-primary font-bold tracking-tighter">TaskPulse</h1>
+<div class="mt-md flex items-center gap-sm p-sm rounded hover:bg-white/5 transition-all duration-300">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="A minimalist high-tech corporate logo featuring clean geometric lines and a deep obsidian and neon blue color palette. The aesthetic is sophisticated and enterprise-grade, set against a dark, slightly textured glass background with soft cyan highlights. This professional logo represents high-performance artificial intelligence and team collaboration tools." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmXGfBrbrvXoZqMgTTNWHdjfOYBOdp7vHDiQILsC-MvtNnp-BBb0-QTz2yK3Ee18FlxkNCqfgkuZmkaWZwQv8X4q8ls-RzsmxOOtAwRaIGDkxh8TqzRhSD3uv3wsBT0JAK1NFx8388Yjbt1GiD7SYegmV6swIkmvycs761buSxNey3GPjuBGQzH7ilQqKgj0eVn-iYWKiVCr-I0HUIXPFct2AmQQukGFpAht4ihSiX8w7argckEGopVLKhhMK71RoQNlMbPv-VeWyR"/>
+<div>
+<p class="font-label-caps text-on-surface text-[10px] leading-none uppercase opacity-60">Enterprise Plan</p>
+<p class="font-headline-md text-[14px] text-on-surface leading-tight">Acme Corp</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">folder_shared</span>
+<span>Projects</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span>Tasks</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Team</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg bg-primary-container/20 text-primary border-r-4 border-primary shadow-[0_0_15px_rgba(0,112,243,0.2)] transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg border-t border-white/5 space-y-xs">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen pb-xxl">
+<!-- TopAppBar (Shared Component) -->
+<header class="sticky top-0 z-40 h-16 w-full bg-surface/70 backdrop-blur-[20px] border-b border-white/10 px-gutter flex justify-between items-center shadow-[0_40px_60px_-15px_rgba(0,0,0,0.3)]">
+<div class="flex items-center gap-xl">
+<h2 class="font-headline-md text-on-surface">Settings</h2>
+<div class="hidden md:flex gap-lg">
+<a class="font-body-md text-primary border-b-2 border-primary pb-1" href="#">Account</a>
+<a class="font-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Notifications</a>
+<a class="font-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Security</a>
+<a class="font-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Billing</a>
+<a class="font-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Integrations</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined p-sm rounded-full hover:bg-white/5 transition-all">notifications</button>
+<img class="w-8 h-8 rounded-full border border-white/10" data-alt="A close-up high-resolution portrait of a professional male user in a dark, moody setting. The lighting is dramatic and cinematic, with a soft neon blue glow reflecting on his features to match the TaskPulse UI aesthetic. He is wearing high-end tech-wear, and the background is a blurred digital office environment with deep blacks and vibrant blue data streams." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkNFCPCpcDAfFXCiqyAgHqvrcW7SRDDjls_tZBm_zriSXQhpqXiggwN49GsJLLgZuHO8ZZN1xPqusawVb8YRjlECXxWqM3v1U9zV_iOYLSmfDvOkwk1BmHMRvarB8RgaVWrmqxJSyWdefhTEiYHgmLwWxDTSLJLjsu948AbhHwsZZRxlSszjdVGn-itiMrejf7HJ-4el9HkQuzrPme--5PAxjIkot37ib5lg3isYglrnIF56MwXo7dqyXWkwTkWBn_T71qCgTXigoi"/>
+</div>
+</header>
+<!-- Content Area: Bento Layout -->
+<div class="max-w-container-max mx-auto px-gutter pt-xl grid grid-cols-12 gap-lg items-start">
+<!-- Profile Section (Primary Bento Card) -->
+<section class="col-span-12 lg:col-span-8 glass-card rounded-xl p-xl flex flex-col md:flex-row gap-xl items-center md:items-start">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full overflow-hidden border-2 border-primary/30 relative">
+<img class="w-full h-full object-cover" data-alt="A detailed portrait of a modern tech professional, framed within a perfectly circular profile avatar. The subject is softly lit by cool blue and warm purple accent lights, echoing the brand's neon gradient. The background is a clean, dark obsidian finish that highlights the sharp detail and professional demeanor of the individual." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_X-HK8T7GLGnobH0KQv88LLkNp8svvFqDJwXyVeSDYw1ortOyYQRnO5nJki0qkh4GEwQ4f2o0uNfpxSOB0NIuX_aPb1KgI6vuIJQyJdnP9QbdGR8ZHfIwiRYspitTNbJvqdzStDZquHsbPydOjp9Hg1oG7-FJD_rf7qlRbbAJCPVtRseHGF25OEJr-FRtOwEfjSg1pY64lY1jbQBnskCtWz9zEGEnihjDY7raYlLIK39gykcJwm9e7jnB5lAIbD-kqr4xxrkWffQO"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-white text-headline-lg">photo_camera</span>
+</div>
+</div>
+<button class="absolute -bottom-2 -right-2 p-xs bg-primary text-on-primary rounded-full shadow-lg border-2 border-background">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<div class="flex-1 space-y-lg w-full">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant">Display Name</label>
+<input class="w-full bg-[#050505] border border-white/10 rounded-lg p-md focus:outline-none focus:border-primary transition-all text-on-surface" type="text" value="Alexander Vance"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant">Email Address</label>
+<input class="w-full bg-[#050505] border border-white/10 rounded-lg p-md focus:outline-none focus:border-primary transition-all text-on-surface" type="email" value="alexander.v@taskpulse.ai"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant">Bio</label>
+<textarea class="w-full bg-[#050505] border border-white/10 rounded-lg p-md focus:outline-none focus:border-primary transition-all text-on-surface resize-none" rows="3">Product Designer at TaskPulse. Focused on building high-performance design systems and AI-driven task orchestration for enterprise teams.</textarea>
+</div>
+<div class="flex justify-end gap-md pt-md">
+<button class="font-body-md text-on-surface-variant px-lg py-sm hover:text-on-surface transition-colors">Discard</button>
+<button class="font-body-md neon-accent text-white px-xl py-sm rounded-lg font-semibold active:scale-95 transition-transform">Save Changes</button>
+</div>
+</div>
+</section>
+<!-- Quick Stats/Theme Side Bento -->
+<div class="col-span-12 lg:col-span-4 space-y-lg">
+<!-- Appearance Card -->
+<section class="glass-card rounded-xl p-lg space-y-lg">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-body-lg font-bold">Appearance</h3>
+<span class="material-symbols-outlined text-on-surface-variant">palette</span>
+</div>
+<div class="grid grid-cols-3 gap-sm">
+<div class="cursor-pointer group">
+<div class="aspect-square bg-white rounded-lg border-2 border-white/10 mb-xs overflow-hidden">
+<div class="w-full h-1/3 bg-slate-100 p-xs flex gap-xs">
+<div class="w-1/2 h-1 bg-slate-300 rounded"></div>
+</div>
+</div>
+<p class="text-center font-label-caps text-[10px] opacity-60">Light</p>
+</div>
+<div class="cursor-pointer group">
+<div class="aspect-square bg-background rounded-lg border-2 border-primary mb-xs overflow-hidden relative">
+<div class="w-full h-1/3 bg-surface-container-high p-xs flex gap-xs">
+<div class="w-1/2 h-1 bg-primary rounded"></div>
+</div>
+<div class="absolute inset-0 bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[16px]">check_circle</span>
+</div>
+</div>
+<p class="text-center font-label-caps text-[10px] text-primary">Dark</p>
+</div>
+<div class="cursor-pointer group">
+<div class="aspect-square rounded-lg border-2 border-white/10 mb-xs overflow-hidden bg-gradient-to-br from-white via-slate-400 to-black">
+</div>
+<p class="text-center font-label-caps text-[10px] opacity-60">System</p>
+</div>
+</div>
+</section>
+<!-- Security Quick Link -->
+<section class="glass-card rounded-xl p-lg bg-gradient-to-br from-primary/5 to-secondary/5 border-primary/20">
+<div class="flex gap-md items-start">
+<div class="p-md bg-primary/10 rounded-xl">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+<div class="space-y-xs">
+<h4 class="font-headline-md text-[16px]">2FA is Enabled</h4>
+<p class="font-body-md text-[13px] text-on-surface-variant">Your account is highly secure. Last login: 2 hours ago from San Francisco, CA.</p>
+<a class="inline-block pt-sm text-primary font-label-caps text-[11px] hover:underline" href="#">MANAGE SECURITY</a>
+</div>
+</div>
+</section>
+</div>
+<!-- Notifications Section -->
+<section class="col-span-12 glass-card rounded-xl overflow-hidden">
+<div class="p-xl border-b border-white/5">
+<h3 class="font-headline-md">Notification Preferences</h3>
+<p class="text-on-surface-variant font-body-md mt-xs">Manage how and when you receive task updates and team alerts.</p>
+</div>
+<div class="p-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+<!-- Notification Item -->
+<div class="flex items-center justify-between p-lg rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+<div class="space-y-xs">
+<h4 class="font-headline-md text-[16px]">Email Digest</h4>
+<p class="text-[13px] text-on-surface-variant">Weekly summary of tasks.</p>
+</div>
+<div class="w-12 h-6 bg-primary-container rounded-full relative cursor-pointer shadow-[0_0_15px_rgba(0,112,243,0.3)]">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<!-- Notification Item -->
+<div class="flex items-center justify-between p-lg rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+<div class="space-y-xs">
+<h4 class="font-headline-md text-[16px]">Push Alerts</h4>
+<p class="text-[13px] text-on-surface-variant">Immediate task mentions.</p>
+</div>
+<div class="w-12 h-6 bg-primary-container rounded-full relative cursor-pointer shadow-[0_0_15px_rgba(0,112,243,0.3)]">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<!-- Notification Item -->
+<div class="flex items-center justify-between p-lg rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+<div class="space-y-xs">
+<h4 class="font-headline-md text-[16px]">Team Activity</h4>
+<p class="text-[13px] text-on-surface-variant">Real-time collaboration.</p>
+</div>
+<div class="w-12 h-6 bg-white/10 rounded-full relative cursor-pointer">
+<div class="absolute left-1 top-1 w-4 h-4 bg-on-surface-variant rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Billing & Subscription Section (Asymmetric) -->
+<section class="col-span-12 lg:col-span-7 glass-card rounded-xl p-xl space-y-lg">
+<div class="flex justify-between items-start">
+<div class="space-y-xs">
+<h3 class="font-headline-md">Billing &amp; Plan</h3>
+<p class="text-on-surface-variant font-body-md">Manage your subscription and invoices.</p>
+</div>
+<span class="font-label-caps bg-primary/20 text-primary px-md py-xs rounded-full border border-primary/30">CURRENT: ENTERPRISE</span>
+</div>
+<div class="space-y-md">
+<div class="flex items-center gap-lg p-lg rounded-xl bg-white/5 border border-white/5">
+<div class="p-md bg-white/5 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-on-surface">credit_card</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[15px]">Visa ending in 4242</p>
+<p class="text-[13px] text-on-surface-variant">Expiry 05/27 • Default Payment Method</p>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="flex gap-md pt-md">
+<button class="font-body-md bg-white/5 border border-white/10 text-on-surface px-lg py-sm rounded-lg hover:bg-white/10 transition-all">Update Card</button>
+<button class="font-body-md text-on-surface-variant px-lg py-sm hover:text-on-surface">View History</button>
+</div>
+</section>
+<!-- Integrations Widget -->
+<section class="col-span-12 lg:col-span-5 glass-card rounded-xl p-xl space-y-lg relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-48 h-48 bg-primary/10 blur-[80px] rounded-full"></div>
+<h3 class="font-headline-md">Connected Apps</h3>
+<div class="space-y-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-[#4A154B] flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="A clean, isolated professional logo of Slack, a corporate communication platform, set against a dark background that fits the high-end TaskPulse design aesthetic. The logo is vibrant and crisp, emphasizing connectivity and enterprise-level software integration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSq6ZViv3hI3oMVwvvRgXKYClIxgnI3uf0m877fZjQdSJTtT2RQ5GQTktcA6GTWQSL5kdWmwiuEX8QQ2gndKbO5UzL5BALMOMPAsDBTBdvxYEnh7yZRN9Eerl6BeSwXd0eyzuUYFIX61KjVHBJ5SiFDWh3PIisPaun7ggcU8Sq55QAozUNcFvydlNqAhPJt-ZzuDtu36wJPDHv34ZW_TOYjuScAhDpo_Ljoo1Qx-FmiVfguMAHBmCN4oZhtgm5E4adf1AzSZcIVrO8"/>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[14px]">Slack</p>
+<p class="text-[12px] text-on-surface-variant">Connected to #project-alpha</p>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center gap-md opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded bg-[#1DA1F2] flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="The minimal white logo of a globally recognized cloud storage service, presented in a crisp, sharp graphic format. It is displayed on a deep charcoal backdrop, consistent with the sleek, high-precision instrument look of the TaskPulse platform. The image conveys seamless data management and security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDILe08ZLiRXk3Go_19WRvJAYccyLdjat5shlk1pxXmvjtgw9ZskJbg_6YvuZNC_aByTsXX6lbxZeP1KYfTLkQjdChyW07OB3vL58s28Sxa_0qQBXzp3LBk4Tuvhul8OZgtR-JSAFQNfadMs1W3zcYHPRqkS2zDNJ9p4tZ443adClSLell_mVar-8RfFFI5KK5FL8KhNpfWRRMVDfIct6pWak3yzXXf4S9FBCktQc6XPWwk92lOt4URiu34oThsFOa5VURJcLQZR8KG"/>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[14px]">Google Drive</p>
+<p class="text-[12px] text-on-surface-variant">Sync files automatically</p>
+</div>
+<button class="font-label-caps text-[10px] text-on-surface-variant border border-white/20 px-sm py-1 rounded">CONNECT</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="mt-xxl border-t border-white/5 bg-surface-container-lowest py-xxl w-full">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="col-span-1 md:col-span-1 space-y-md">
+<p class="font-label-caps text-body-lg text-on-surface">TaskPulse AI</p>
+<p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed">The high-precision workspace for elite teams who prioritize velocity and clarity.</p>
+</div>
+<div class="space-y-sm">
+<h5 class="font-label-caps text-primary text-[11px] mb-md">RESOURCES</h5>
+<a class="block font-body-md text-[14px] text-on-surface-variant hover:text-primary transition-colors" href="#">Features</a>
+<a class="block font-body-md text-[14px] text-on-surface-variant hover:text-primary transition-colors" href="#">API Docs</a>
+<a class="block font-body-md text-[14px] text-on-surface-variant hover:text-primary transition-colors" href="#">Security</a>
+</div>
+<div class="space-y-sm">
+<h5 class="font-label-caps text-primary text-[11px] mb-md">LEGAL</h5>
+<a class="block font-body-md text-[14px] text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="block font-body-md text-[14px] text-on-surface-variant hover:text-primary transition-colors" href="#">Terms</a>
+<a class="block font-body-md text-[14px] text-on-surface-variant hover:text-primary transition-colors" href="#">Status</a>
+</div>
+<div class="space-y-md">
+<h5 class="font-label-caps text-primary text-[11px]">JOIN OUR NEWSLETTER</h5>
+<div class="flex">
+<input class="bg-white/5 border border-white/10 rounded-l-lg p-sm flex-1 text-[13px] focus:outline-none focus:border-primary" placeholder="Email address" type="text"/>
+<button class="bg-primary text-on-primary px-md rounded-r-lg hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter mt-xl pt-lg border-t border-white/5 text-center">
+<p class="font-body-md text-[12px] text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity">© 2024 TaskPulse AI. Built for high-performance teams.</p>
+</div>
+</footer>
+</main>
+</body></html>

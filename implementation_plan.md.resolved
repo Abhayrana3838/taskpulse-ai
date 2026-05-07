@@ -1,0 +1,304 @@
+# TaskPulse — Full-Stack React + Python + SQL Rebuild with World-Class Animations
+
+Convert the existing 8 static HTML pages of TaskPulse (an enterprise project management SaaS) into a production-grade full-stack application with animations that rival Apple/FAANG quality.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **This is a massive project.** We are building a complete full-stack app with 8+ pages, a Python API, SQL database, JWT auth, and cinema-grade animations using Framer Motion + Three.js. This plan is structured in phases so we can build incrementally and validate as we go.
+
+> [!WARNING]
+> **Database Choice**: I'll use **SQLite** for local development (zero setup). If you want PostgreSQL or MySQL for production, let me know and I'll adjust.
+
+> [!WARNING]
+> **Three.js Scope**: Three.js will be used strategically (landing page hero 3D scene, login page ambient orb, page transition effects) — NOT on every page, to keep performance smooth. Overusing 3D degrades UX. Let me know if you want more or less 3D.
+
+## Open Questions
+
+1. **Authentication**: Should users actually be able to register/login, or is this a demo with mock data? *(I'll build real JWT auth either way)*
+2. **Deployment**: Do you want Docker setup or just local dev for now?
+3. **Any additional pages** beyond the 8 we have? (Landing, Login, Sign Up, Dashboard, Projects, Kanban, Task Detail, Settings)
+
+---
+
+## Architecture Overview
+
+```
+taskpulse/
+├── frontend/                    # React + Vite + TailwindCSS v4
+│   ├── src/
+│   │   ├── components/          # Reusable UI components
+│   │   │   ├── layout/          # Sidebar, TopBar, Footer
+│   │   │   ├── ui/              # GlassCard, Button, Input, Badge, etc.
+│   │   │   └── three/           # Three.js scenes (Hero, Orb, Particles)
+│   │   ├── pages/               # 8 page components
+│   │   ├── hooks/               # Custom hooks (useAuth, useAPI, etc.)
+│   │   ├── context/             # Auth context, Theme context
+│   │   ├── lib/                 # API client, utils
+│   │   ├── styles/              # Global CSS + design tokens
+│   │   └── assets/              # Static assets
+│   └── package.json
+│
+├── backend/                     # Python FastAPI
+│   ├── app/
+│   │   ├── main.py              # FastAPI app entry
+│   │   ├── models.py            # SQLAlchemy ORM models
+│   │   ├── schemas.py           # Pydantic schemas
+│   │   ├── database.py          # SQLite connection + session
+│   │   ├── auth.py              # JWT auth utilities
+│   │   ├── routes/              # API route modules
+│   │   │   ├── auth.py          # Login, Register, Token refresh
+│   │   │   ├── projects.py      # CRUD for projects
+│   │   │   ├── tasks.py         # CRUD for tasks
+│   │   │   ├── users.py         # Profile, settings
+│   │   │   └── dashboard.py     # Aggregated stats
+│   │   └── seed.py              # Seed database with demo data
+│   └── requirements.txt
+│
+└── taskpulse.db                 # SQLite database file
+```
+
+---
+
+## Proposed Changes
+
+### Phase 1: Backend (Python + FastAPI + SQLite)
+
+#### [NEW] `backend/requirements.txt`
+- FastAPI, uvicorn, SQLAlchemy, pydantic, python-jose (JWT), passlib, bcrypt
+
+#### [NEW] `backend/app/database.py`
+- SQLite connection via SQLAlchemy
+- Session dependency for FastAPI
+
+#### [NEW] `backend/app/models.py`
+- **User**: id, name, email, password_hash, bio, avatar_url, role, created_at
+- **Project**: id, name, description, icon, status (active/planning/staging), progress, due_date, owner_id
+- **Task**: id, title, description, project_id, assignee_id, status (todo/in_progress/done), priority (high/medium/low), due_date, tags, checklist (JSON), created_at
+- **Comment**: id, task_id, user_id, content, created_at
+- **UserSettings**: id, user_id, theme, email_digest, push_alerts, team_activity
+
+#### [NEW] `backend/app/schemas.py`
+- Pydantic request/response models for all entities
+
+#### [NEW] `backend/app/auth.py`
+- JWT token creation/validation, password hashing with bcrypt
+
+#### [NEW] `backend/app/routes/auth.py`
+- `POST /api/auth/register` — Create account
+- `POST /api/auth/login` — Returns JWT token
+- `GET /api/auth/me` — Get current user from token
+
+#### [NEW] `backend/app/routes/projects.py`
+- `GET /api/projects` — List all projects with progress
+- `POST /api/projects` — Create project
+- `GET /api/projects/:id` — Single project with tasks
+- `PUT /api/projects/:id` — Update project
+
+#### [NEW] `backend/app/routes/tasks.py`
+- `GET /api/tasks?project_id=X` — Tasks filtered by project
+- `POST /api/tasks` — Create task
+- `PUT /api/tasks/:id` — Update task (status, priority, assignee)
+- `GET /api/tasks/:id` — Task detail with comments & checklist
+- `POST /api/tasks/:id/comments` — Add comment
+
+#### [NEW] `backend/app/routes/dashboard.py`
+- `GET /api/dashboard/stats` — Active projects count, total tasks, team pulse score
+- `GET /api/dashboard/activity` — Recent team activity feed
+- `GET /api/dashboard/velocity` — Chart data for project velocity
+- `GET /api/dashboard/overdue` — Overdue tasks
+
+#### [NEW] `backend/app/routes/users.py`
+- `PUT /api/users/profile` — Update name, bio, avatar
+- `GET /api/users/settings` — Get notification preferences
+- `PUT /api/users/settings` — Update notification preferences
+
+#### [NEW] `backend/app/seed.py`
+- Populate database with realistic demo data matching the HTML mockups (Acme Corp, Aether Engine project, team members, kanban tasks, etc.)
+
+#### [NEW] `backend/app/main.py`
+- FastAPI app with CORS middleware, route registration, startup seeding
+
+---
+
+### Phase 2: Frontend Foundation (React + Vite)
+
+#### [NEW] `frontend/` — Initialize with Vite + React + TailwindCSS v4
+
+#### [NEW] `frontend/src/styles/index.css`
+- Complete design system ported from the HTML:
+  - All 40+ color tokens (obsidian dark theme)
+  - Typography scale (Inter, Space Grotesk)
+  - Spacing tokens (gutter, sm, md, lg, xl, xxl)
+  - Glass card styles, neon gradients, glow effects
+  - Custom scrollbar styles
+  - Material Symbols font integration
+
+#### [NEW] `frontend/src/components/ui/`
+- `GlassCard.jsx` — Glassmorphism card with hover glow
+- `Button.jsx` — Primary (neon gradient), secondary, ghost variants
+- `Input.jsx` — Dark input with focus glow ring
+- `Badge.jsx` — Status/priority badges with neon borders
+- `ProgressBar.jsx` — Animated progress with gradient fill
+- `Toggle.jsx` — Settings toggle switch
+- `Avatar.jsx` — Profile avatar with border ring
+
+#### [NEW] `frontend/src/components/layout/`
+- `Sidebar.jsx` — Fixed side nav with active states + hover translate animation (Framer Motion)
+- `TopBar.jsx` — Sticky glassmorphism header with search
+- `Footer.jsx` — Full footer with newsletter signup
+- `AppLayout.jsx` — Wraps Sidebar + TopBar + content area with animated page transitions
+
+---
+
+### Phase 3: Animation Layer (Framer Motion + Three.js)
+
+#### Animation Strategy (This is what makes it FAANG-level):
+
+**Framer Motion (everywhere):**
+- **Page transitions**: Smooth fade + slide between routes with `AnimatePresence`
+- **Staggered children**: Cards, list items, sidebar links animate in with stagger
+- **Scroll-triggered reveals**: Sections on landing page appear with spring physics
+- **Hover micro-interactions**: Cards lift + glow, buttons scale, nav items slide
+- **Layout animations**: Kanban cards with `layoutId` for drag-and-drop transitions
+- **Number counters**: Dashboard stats animate from 0 to value on mount
+- **Skeleton loaders**: Shimmer effect while data loads
+
+**Three.js (strategic hero moments):**
+
+#### [NEW] `frontend/src/components/three/HeroScene.jsx`
+- Landing page hero: Animated particle mesh sphere that morphs and pulses
+- Floating connected nodes with glowing edges (like a neural network)
+- Responds to mouse position (parallax effect)
+- Uses `@react-three/fiber` + `@react-three/drei`
+
+#### [NEW] `frontend/src/components/three/LoginOrb.jsx`
+- Login/Signup page: Ethereal glowing orb with volumetric light rays
+- Subtle color shift between blue (#0070f3) and purple (#6807ba)
+- Reactive to form focus state
+
+#### [NEW] `frontend/src/components/three/ParticleField.jsx`
+- Dashboard background: Subtle floating particle grid
+- Ultra-low opacity, non-distracting
+- GPU instanced for performance
+
+---
+
+### Phase 4: Pages Implementation
+
+#### [NEW] `frontend/src/pages/LandingPage.jsx`
+- Three.js hero scene background
+- Animated hero text with word-by-word reveal
+- Floating stat cards with spring animations
+- Bento grid features with stagger + scroll trigger
+- Counter animations for productivity stats
+- Trusted-by logo marquee
+- CTA section with pulse glow
+
+#### [NEW] `frontend/src/pages/LoginPage.jsx`
+- Split layout: Three.js orb (left) + glass form (right)
+- Input fields with focus glow animations
+- Social login buttons with hover ripple
+- Form submission with loading spinner
+- Connects to `POST /api/auth/login`
+
+#### [NEW] `frontend/src/pages/SignUpPage.jsx`
+- Split layout with feature showcase (left) + form (right)
+- Feature cards with hover translate animation
+- Password strength indicator
+- Connects to `POST /api/auth/register`
+
+#### [NEW] `frontend/src/pages/DashboardPage.jsx`
+- Stats cards with counter animation (0 → value)
+- Project velocity chart (Recharts with custom styling)
+- Overdue alerts with pulse animation
+- Donut chart for completion goal
+- Team activity feed with staggered reveal
+- Real data from `/api/dashboard/*`
+
+#### [NEW] `frontend/src/pages/ProjectsPage.jsx`
+- Project cards grid with stagger animation
+- Progress bars with animated fill on mount
+- Hover effects: card lifts + border glow
+- "Create New Project" card with dashed border hover
+- Data from `/api/projects`
+
+#### [NEW] `frontend/src/pages/KanbanPage.jsx`
+- Drag-and-drop columns using `@hello-pangea/dnd`
+- Framer Motion `layoutId` for smooth card reposition
+- Active column glow effect
+- Priority badges with color-coded neon
+- View switcher (Board/List/Calendar) tabs
+- Data from `/api/tasks?project_id=X`
+- Updates via `PUT /api/tasks/:id`
+
+#### [NEW] `frontend/src/pages/TaskDetailPage.jsx`
+- Modal overlay with backdrop blur
+- Slide-in animation from right
+- Checklist with animated checkbox transitions
+- Comment section with real-time feel
+- Sidebar metadata with dropdown animations
+- Data from `/api/tasks/:id`
+
+#### [NEW] `frontend/src/pages/SettingsPage.jsx`
+- Bento grid layout for settings cards
+- Profile photo upload with hover overlay
+- Theme selector with visual previews
+- Notification toggles with spring animation
+- Connected apps with grayscale → color transition
+- Data from `/api/users/settings`
+
+---
+
+### Phase 5: Routing, Auth & Integration
+
+#### [NEW] `frontend/src/context/AuthContext.jsx`
+- JWT token storage in localStorage
+- Login/logout/register functions
+- Auto-redirect to login if token expired
+
+#### [NEW] `frontend/src/lib/api.js`
+- Axios instance with base URL pointing to FastAPI
+- Auth interceptor to attach JWT token
+- Error handling with toast notifications
+
+#### [NEW] `frontend/src/App.jsx`
+- React Router v6 with `AnimatePresence` for page transitions
+- Protected routes (Dashboard, Projects, Kanban, Settings)
+- Public routes (Landing, Login, Sign Up)
+
+---
+
+## Tech Stack Summary
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend Framework** | React 18 + Vite |
+| **Styling** | TailwindCSS v4 |
+| **Animations** | Framer Motion 11 |
+| **3D Graphics** | Three.js via @react-three/fiber |
+| **Drag & Drop** | @hello-pangea/dnd |
+| **Charts** | Recharts |
+| **Routing** | React Router v6 |
+| **Backend** | Python FastAPI |
+| **ORM** | SQLAlchemy |
+| **Database** | SQLite |
+| **Auth** | JWT (python-jose) + bcrypt |
+| **API Client** | Axios |
+
+---
+
+## Verification Plan
+
+### Automated Tests
+1. **Backend**: Start FastAPI server, hit all API endpoints with curl/httpx
+2. **Frontend**: `npm run dev` — verify all pages render, navigation works
+3. **Auth flow**: Register → Login → Access protected routes → Logout
+4. **Data flow**: Create project → Add tasks → View on kanban → Update status
+
+### Manual Verification
+1. **Browser testing**: Open in browser, check all 8 pages visually
+2. **Animation quality**: Verify smooth 60fps transitions, no jank
+3. **Three.js performance**: Confirm hero scene runs smoothly
+4. **Responsive**: Check mobile/tablet breakpoints
+5. **Dark theme consistency**: Verify all pages match the obsidian design system

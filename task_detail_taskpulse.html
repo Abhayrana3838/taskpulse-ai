@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-container": "#e60073",
+                    "outline": "#8b90a0",
+                    "surface-container-high": "#2a2a2a",
+                    "outline-variant": "#414754",
+                    "on-primary-fixed-variant": "#004397",
+                    "tertiary-fixed-dim": "#ffb1c5",
+                    "primary-fixed-dim": "#aec6ff",
+                    "on-primary-fixed": "#001a43",
+                    "surface-variant": "#353534",
+                    "surface-container": "#201f1f",
+                    "on-surface-variant": "#c1c6d7",
+                    "on-background": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-bright": "#3a3939",
+                    "on-secondary": "#470083",
+                    "on-tertiary-fixed-variant": "#8f0045",
+                    "on-secondary-container": "#d0a6ff",
+                    "on-secondary-fixed-variant": "#6600b7",
+                    "secondary-fixed-dim": "#dbb8ff",
+                    "background": "#131313",
+                    "surface-tint": "#aec6ff",
+                    "error-container": "#93000a",
+                    "surface-dim": "#131313",
+                    "inverse-on-surface": "#313030",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#ffffff",
+                    "error": "#ffb4ab",
+                    "primary": "#aec6ff",
+                    "on-tertiary-fixed": "#3f001b",
+                    "secondary-container": "#6807ba",
+                    "on-tertiary": "#65002f",
+                    "secondary-fixed": "#efdbff",
+                    "surface": "#131313",
+                    "on-primary": "#002e6b",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-container": "#0070f3",
+                    "tertiary": "#ffb1c5",
+                    "tertiary-fixed": "#ffd9e1",
+                    "on-surface": "#e5e2e1",
+                    "secondary": "#dbb8ff",
+                    "inverse-primary": "#0059c5",
+                    "on-primary-container": "#ffffff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-secondary-fixed": "#2b0052"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "md": "16px",
+                    "xxl": "80px",
+                    "container-max": "1440px",
+                    "xl": "40px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-caps": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-xl": ["Inter"],
+                    "code": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "code": ["14px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-modal {
+        background: rgba(14, 14, 14, 0.7);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(174, 198, 255, 0.2);
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-hidden">
+<!-- Background Kanban Board (Simulated) -->
+<div class="fixed inset-0 grid grid-cols-4 gap-lg p-gutter opacity-20 pointer-events-none">
+<div class="flex flex-col gap-md">
+<div class="h-10 w-32 bg-surface-container-highest rounded-xl"></div>
+<div class="h-40 bg-surface-container rounded-xl"></div>
+<div class="h-40 bg-surface-container rounded-xl"></div>
+</div>
+<div class="flex flex-col gap-md">
+<div class="h-10 w-32 bg-surface-container-highest rounded-xl"></div>
+<div class="h-40 bg-surface-container rounded-xl"></div>
+</div>
+<div class="flex flex-col gap-md">
+<div class="h-10 w-32 bg-surface-container-highest rounded-xl"></div>
+<div class="h-40 bg-surface-container rounded-xl"></div>
+<div class="h-40 bg-surface-container rounded-xl"></div>
+</div>
+<div class="flex flex-col gap-md">
+<div class="h-10 w-32 bg-surface-container-highest rounded-xl"></div>
+<div class="h-40 bg-surface-container rounded-xl"></div>
+</div>
+</div>
+<!-- Overlay Backdrop -->
+<div class="fixed inset-0 bg-surface-container-lowest/80 backdrop-blur-sm z-[60] flex items-center justify-center p-md md:p-xl">
+<!-- Task Detail Modal -->
+<div class="glass-modal w-full max-w-5xl max-h-[921px] rounded-xl flex flex-col shadow-[0_0_80px_rgba(0,112,243,0.15)] relative animate-in fade-in zoom-in duration-300">
+<!-- Modal Header -->
+<header class="flex justify-between items-center px-lg py-md border-b border-white/5 shrink-0">
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+<span class="font-label-caps text-label-caps">TASK-4291</span>
+</div>
+<div class="h-4 w-[1px] bg-white/10"></div>
+<div class="flex -space-x-2">
+<div class="h-6 w-6 rounded-full border border-surface-container bg-surface-container-highest overflow-hidden">
+<img alt="User" data-alt="A high-quality 3D rendered avatar of a software engineer with professional attire, set against a clean, dark obsidian background. The lighting is focused and cinematic, reflecting a high-end enterprise software aesthetic with soft neon blue rim lights. The character looks focused and tech-savvy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxmuLWykJD2uY2egI6ot6BGcfwTnoXKOuXUZkGIP6AaaEgykKI7IJgEyClIqwxHB9KIBxXZ9Qhyk71NmLAfCqUQiPKpg-3cRPjx_3vkG2TnIg_1eNCxLE3YpBeMnYUa2YZfHR_DxX0nqRMewvIGotUcD3GJ2eYgqfRdBuwmyj18eKdNw50ShAP9byqePRQLy95n3kgIXp6hnXQ8O5aecCasgyk22jueHlnBcesFkSM91u6gIlB1SVOMqzNU6-R7ewTX2Uyfzrh6nVr"/>
+</div>
+<div class="h-6 w-6 rounded-full border border-surface-container bg-primary-container flex items-center justify-center text-[10px] font-bold text-white">+2</div>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-sm rounded-lg hover:bg-white/5 transition-colors text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span class="font-label-caps text-label-caps">Share</span>
+</button>
+<button class="h-8 w-8 flex items-center justify-center rounded-lg hover:bg-error/10 hover:text-error transition-all group">
+<span class="material-symbols-outlined transition-transform group-active:scale-90">close</span>
+</button>
+</div>
+</header>
+<!-- Modal Content Body -->
+<div class="flex flex-col md:flex-row flex-1 overflow-hidden">
+<!-- Main Content (Left) -->
+<main class="flex-1 overflow-y-auto custom-scrollbar p-lg space-y-xl">
+<!-- Title Section -->
+<section class="space-y-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Implement Volumetric Lighting Pass</h1>
+<div class="flex items-center gap-md text-on-surface-variant">
+<span class="flex items-center gap-xs font-body-md text-body-md">
+<span class="material-symbols-outlined text-primary text-[18px]">calendar_today</span>
+                                Created 2 days ago
+                            </span>
+<span class="flex items-center gap-xs font-body-md text-body-md">
+<span class="material-symbols-outlined text-primary text-[18px]">chat_bubble</span>
+                                12 Comments
+                            </span>
+</div>
+</section>
+<!-- Description Section -->
+<section class="space-y-md">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Description</h3>
+<div class="text-on-surface-variant space-y-md font-body-md leading-relaxed">
+<p>Integrate the new volumetric scattering algorithms into the primary rendering pipeline. This pass must handle light shafts and atmospheric density calculation without exceeding the 2ms frame budget on standard hardware.</p>
+<p>Key focus: <span class="text-primary">GPU-accelerated ray marching</span> and jittering techniques to minimize banding artifacts in low-light environments.</p>
+</div>
+</section>
+<!-- Checklist Section -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Checklist</h3>
+<span class="text-primary font-label-caps text-label-caps">60% Complete</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="w-[60%] h-full bg-gradient-to-r from-primary to-secondary-container"></div>
+</div>
+<div class="space-y-sm pt-sm">
+<div class="flex items-center gap-md group cursor-pointer">
+<div class="h-5 w-5 rounded border border-primary-container flex items-center justify-center bg-primary-container text-white">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="text-on-surface font-body-md line-through opacity-50">Profile core rendering loops</span>
+</div>
+<div class="flex items-center gap-md group cursor-pointer">
+<div class="h-5 w-5 rounded border border-primary-container flex items-center justify-center bg-primary-container text-white">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="text-on-surface font-body-md line-through opacity-50">Optimize shadow map sampling</span>
+</div>
+<div class="flex items-center gap-md group cursor-pointer">
+<div class="h-5 w-5 rounded border border-outline transition-colors hover:border-primary"></div>
+<span class="text-on-surface font-body-md">Implement temporal anti-aliasing (TAA) integration</span>
+</div>
+<button class="flex items-center gap-xs text-primary-fixed-dim hover:text-primary transition-colors pt-sm font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                                Add Item
+                            </button>
+</div>
+</section>
+<!-- Activity/Comments Section -->
+<section class="space-y-lg pt-md">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Activity</h3>
+<!-- Comment Input -->
+<div class="flex gap-md">
+<div class="h-10 w-10 shrink-0 rounded-full border border-white/10 bg-surface-container overflow-hidden">
+<img alt="Me" data-alt="A professional close-up avatar of a creative director in a high-tech studio environment. The lighting is sophisticated, utilizing a dark mode theme with deep obsidian backgrounds and subtle refractive glass effects. The facial features are detailed and friendly, representing a modern leadership style in tech." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMpiLoGPMqMsaMZQC_DA8fE0Zhstvz6dWhvjrbBXWH2wkAJZ_Ie2luX8-FmjpF89PbnEH6VydUKpV5zNyVBiHsoijlkbKTvrol-kpiIC4xjSHNVdxuFgf9KkBAAVsurZCZRBdZY1HChYlWfxoPtosjjRJZhcPdvWXV2bjEgdnLPjNoy40TUuHdnApSgFM8tzgtKCOCsiRzb8AjDfJ0MQUO6qQLp6EXUAQQuhRSyS_YX6QFHiZ0j7oA8sv6hmxiKd9fjAdmvU7ikRxn"/>
+</div>
+<div class="flex-1 relative">
+<textarea class="w-full bg-surface-container-lowest border border-white/10 rounded-xl px-md py-sm text-on-surface focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all min-h-[80px] resize-none font-body-md" placeholder="Write a comment..."></textarea>
+<div class="absolute bottom-3 right-3 flex gap-sm">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">alternate_email</span></button>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">attach_file</span></button>
+</div>
+</div>
+</div>
+<!-- Existing Activity -->
+<div class="space-y-lg">
+<div class="flex gap-md">
+<div class="h-10 w-10 shrink-0 rounded-full border border-white/10 bg-surface-container overflow-hidden">
+<img alt="Marcus" data-alt="A highly detailed 3D avatar of a senior developer with glasses, looking professional and capable. The aesthetic follows a premium dark-mode UI with high-contrast elements, obsidian surfaces, and soft cyan accent lighting. The background is a clean, minimalist digital void." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC8M3UIWhgybHWuTn_1QSzAaWFeJ2CN3jNkQhhd_u-3f2Ep9u94iVmQ4-DjftKxmmiLqjnhFg1DdQ_tL33H5jjEOfjU4F8GLDZicHp6rPnewZNkvpBI3-Soq0t8VjzHmp7xdL3Luwf_whA0xdJUL9L5xIDmaz3rF-19EVFaNFniIuoATuWhTqTkR6tl-S5GZYIXG1fe5XXDqgdaf9z53LE9yXgRjN8VjbVHhHVhlZTBvLlztiYcchrWlEatwAn_5i8Y1dISFduVfqs"/>
+</div>
+<div class="space-y-xs">
+<div class="flex items-center gap-md">
+<span class="font-bold text-on-surface">Marcus Holloway</span>
+<span class="text-on-surface-variant text-[12px]">3 hours ago</span>
+</div>
+<div class="bg-surface-container-high/50 p-md rounded-xl rounded-tl-none border border-white/5">
+<p class="text-on-surface font-body-md">The banding issues in the fog pass have been mitigated. I've uploaded the new shader profile for review.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sidebar (Right) -->
+<aside class="w-full md:w-80 border-l border-white/5 p-lg space-y-xl bg-white/[0.02]">
+<!-- Assignee -->
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block">Assignee</label>
+<button class="w-full flex items-center justify-between p-md bg-surface-container-high/40 border border-white/5 rounded-xl hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-md">
+<div class="h-8 w-8 rounded-full border border-white/10 overflow-hidden">
+<img alt="Marcus" data-alt="Close-up of a diverse professional team member avatar with a calm and confident expression. The lighting is modern and vibrant, using purple and blue hues consistent with a luxury high-performance tech brand. Set against a deep charcoal background with a subtle frosted glass effect." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtXQBjGEFMVK8Edh_kktJ-qGqUAKhbp9lch58v5v1ovHas1an2wKjmPPnSachhERftOsWQ0qzXS-pQATzDe_D1j4gsUG2o7YLRUZu_CxAJxHjPIqiLhw63uKmtUECOdghQDiMEOOU7_RpEApdSU5te3RbsbJ2Bwx4IXmy5QaqlWz3NO63gbPibpkh6e3DWEbeJ5a5uKjW7R89dkkKcliahheNaO1WJD_m8hn8Dsu1xzperxyMMGGx1IIUsyUemtrfwZd0TCUo4MY6b"/>
+</div>
+<span class="text-on-surface font-body-md">Marcus H.</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">unfold_more</span>
+</button>
+</div>
+<!-- Priority -->
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block">Priority</label>
+<button class="w-full flex items-center justify-between p-md bg-surface-container-high/40 border border-white/5 rounded-xl hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-md">
+<div class="h-2 w-2 rounded-full bg-error animate-pulse shadow-[0_0_8px_rgba(255,180,171,0.5)]"></div>
+<span class="text-on-surface font-body-md">High Priority</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">flag</span>
+</button>
+</div>
+<!-- Deadline -->
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block">Deadline</label>
+<button class="w-full flex items-center justify-between p-md bg-surface-container-high/40 border border-white/5 rounded-xl hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">event</span>
+<span class="text-on-surface font-body-md">Oct 24, 2024</span>
+</div>
+<span class="text-on-surface-variant text-[12px] group-hover:text-primary">Edit</span>
+</button>
+</div>
+<!-- Tags -->
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block">Tags</label>
+<div class="flex flex-wrap gap-sm">
+<span class="px-sm py-xs bg-primary/10 text-primary font-label-caps text-[10px] rounded border border-primary/20">PERFORMANCE</span>
+<span class="px-sm py-xs bg-secondary/10 text-secondary font-label-caps text-[10px] rounded border border-secondary/20">RENDERING</span>
+<button class="h-6 w-6 flex items-center justify-center bg-white/5 border border-white/10 rounded hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]">add</span>
+</button>
+</div>
+</div>
+<!-- Actions Footer (Sidebar) -->
+<div class="pt-xl space-y-md">
+<button class="w-full bg-gradient-to-r from-primary-container to-secondary-container text-white py-md rounded-xl font-bold font-body-md shadow-[0_0_20px_rgba(0,112,243,0.3)] hover:shadow-[0_0_30px_rgba(0,112,243,0.5)] transition-all active:scale-95">
+                            Mark as Complete
+                        </button>
+<button class="w-full py-md rounded-xl font-body-md text-on-surface-variant hover:text-error transition-colors border border-transparent hover:border-error/20">
+                            Archive Task
+                        </button>
+</div>
+</aside>
+</div>
+<!-- Modal Footer (Global) -->
+<footer class="h-2 w-full bg-gradient-to-r from-primary/50 via-secondary/50 to-primary/50 opacity-20"></footer>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#e60073",
+                        "outline": "#8b90a0",
+                        "surface-container-high": "#2a2a2a",
+                        "outline-variant": "#414754",
+                        "on-primary-fixed-variant": "#004397",
+                        "tertiary-fixed-dim": "#ffb1c5",
+                        "primary-fixed-dim": "#aec6ff",
+                        "on-primary-fixed": "#001a43",
+                        "surface-variant": "#353534",
+                        "surface-container": "#201f1f",
+                        "on-surface-variant": "#c1c6d7",
+                        "on-background": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-bright": "#3a3939",
+                        "on-secondary": "#470083",
+                        "on-tertiary-fixed-variant": "#8f0045",
+                        "on-secondary-container": "#d0a6ff",
+                        "on-secondary-fixed-variant": "#6600b7",
+                        "secondary-fixed-dim": "#dbb8ff",
+                        "background": "#131313",
+                        "surface-tint": "#aec6ff",
+                        "error-container": "#93000a",
+                        "surface-dim": "#131313",
+                        "inverse-on-surface": "#313030",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#ffffff",
+                        "error": "#ffb4ab",
+                        "primary": "#aec6ff",
+                        "on-tertiary-fixed": "#3f001b",
+                        "secondary-container": "#6807ba",
+                        "on-tertiary": "#65002f",
+                        "secondary-fixed": "#efdbff",
+                        "surface": "#131313",
+                        "on-primary": "#002e6b",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-container": "#0070f3",
+                        "tertiary": "#ffb1c5",
+                        "tertiary-fixed": "#ffd9e1",
+                        "on-surface": "#e5e2e1",
+                        "secondary": "#dbb8ff",
+                        "inverse-primary": "#0059c5",
+                        "on-primary-container": "#ffffff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-secondary-fixed": "#2b0052"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xxl": "80px",
+                        "container-max": "1440px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "code": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "code": ["14px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .glass-card:hover {
+            border: 1px solid rgba(0, 112, 243, 0.4);
+            box-shadow: 0 0 30px rgba(0, 112, 243, 0.15);
+            transform: translateY(-4px) scale(1.02);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(0, 112, 243, 0.4);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #0070F3 0%, #6807ba 100%);
+        }
+        .sidebar-mask {
+            mask-image: linear-gradient(to bottom, black 90%, transparent);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 z-50 bg-surface-container-lowest/80 backdrop-blur-[20px] border-r border-white/5 flex flex-col py-lg px-md shadow-[40px_0_60px_-15px_rgba(0,0,0,0.5)]">
+<div class="mb-xxl flex items-center gap-md px-xs">
+<div class="w-10 h-10 primary-gradient rounded-lg flex items-center justify-center neon-glow">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">pulse_alert</span>
+</div>
+<div>
+<h1 class="font-label-caps text-headline-md text-primary font-bold tracking-tighter">Acme Corp</h1>
+<p class="text-[10px] text-on-surface-variant font-label-caps opacity-70">Enterprise Plan</p>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-primary-container/20 text-primary border-r-4 border-primary shadow-[0_0_15px_rgba(0,112,243,0.2)] ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">folder_shared</span>
+<span class="font-body-md">Projects</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-body-md">Tasks</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md">Team</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-body-md">Reports</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/5 pt-lg space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Help Center</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all duration-300 ease-in-out hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="font-body-md text-error">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas Area -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 z-40 bg-surface/70 backdrop-blur-[20px] border-b border-white/10 shadow-[0_40px_60px_-15px_rgba(0,0,0,0.3)]">
+<div class="flex justify-between items-center h-16 px-gutter w-full">
+<div class="flex items-center gap-xl flex-1">
+<span class="font-label-caps text-headline-md tracking-tighter text-primary">TaskPulse</span>
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-full py-2 pl-10 pr-md text-body-md text-on-surface focus:outline-none focus:border-primary/50 transition-all" placeholder="Search projects..." type="text"/>
+</div>
+<nav class="hidden lg:flex items-center gap-lg ml-md">
+<a class="font-body-md text-primary border-b-2 border-primary pb-1" href="#">Projects</a>
+<a class="font-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Activity</a>
+<a class="font-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="primary-gradient text-white px-md py-sm rounded-lg font-body-md flex items-center gap-sm neon-glow scale-98 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">add</span>
+                        New Project
+                    </button>
+<div class="h-6 w-px bg-white/10 mx-sm"></div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-on-surface transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-on-surface transition-all">help</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a smiling young male executive with short brown hair and a clean-shaven face. He is wearing a dark, minimalist suit against a soft-focus corporate office background. The lighting is bright and modern with a cool color temperature that matches a dark mode enterprise UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlpYC_OJnOKbfKG9EPuti9TeyxZ9Thrf4vR5fOvYqJY402xPD_c6S4oNOBPh6R-qGCqifSmKrDPblU0cy9DhNJ0f-uHqACOxZNxZDew8YIRXgZkGFtYPmn8-E5XS9-7wK9MGi4IwyDoNL_O83pKy5gKxD02uUfFsGcThj535IuAMJggCMjJMcQfhFwvWj8F1qXlTT3RAJ2sX7QFknrgQiCLp90fDpILxYDTT73SOVrC3RHRAZX4FPpDfXFhPuLnEPBACOQViofSjUY"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<section class="flex-1 p-xl max-w-container-max mx-auto w-full">
+<div class="mb-xxl">
+<h2 class="font-headline-lg text-on-surface mb-xs">Project Management</h2>
+<p class="text-on-surface-variant max-w-2xl">High-precision tracking for enterprise-grade deliverables. Monitor progress, manage team allocation, and drive strategic alignment across your roadmap.</p>
+</div>
+<!-- Project Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-lg">
+<!-- Card 1 -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full">
+<div class="flex justify-between items-start mb-lg">
+<div class="p-sm bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">token</span>
+</div>
+<span class="font-label-caps text-[10px] bg-primary/20 text-primary px-sm py-xs rounded-full">ACTIVE</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-sm">Aether Engine</h3>
+<p class="text-on-surface-variant text-body-md mb-xl flex-1">Next-gen rendering core optimization for high-density visual data processing and real-time shadows.</p>
+<div class="space-y-md">
+<div class="flex justify-between items-end mb-xs">
+<span class="text-on-surface-variant font-label-caps text-[10px]">PROGRESS</span>
+<span class="text-primary font-label-caps text-[12px]">74%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full primary-gradient neon-glow" style="width: 74%"></div>
+</div>
+<div class="flex justify-between items-center pt-md">
+<div class="flex -space-x-2">
+<img alt="Team 1" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A close-up portrait of a diverse team member with a warm smile, wearing a modern professional shirt. The lighting is cinematic with a focus on sharp details and deep contrast, set against a dark, minimalist studio background that aligns with a premium dark-themed UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW1KTYxC1ZqxBa7cjUEabgQlYbTTWOg7BSzaYsZtDZIIS5Z6HQvBLr6Q-DtKnl4Y1-_ShJ0Yd44LW4kHB_y7gqLxBytDw12sCfYai1kbKBNqmpVTRBo7LbtZ22Jp_QqycY06H6LHgXSOZ2WJlBXFQxSc-2MRzOOsppAEOxCcHegUQXydOWsZHqWWRvq00FX1p6WcCe6TS3ARflGbHvq7V7Ok61IsSuHV8zVW87xzYxTTtSPz4fYX6spRCmMYtpeWJ8rg4VsqnIYqUL"/>
+<img alt="Team 2" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A portrait of a creative professional woman with a confident gaze and gentle expression. She is in a high-tech environment with subtle blue and purple ambient glows in the background. The visual style is crisp and high-resolution, perfectly fitting for a glassmorphism enterprise dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5nsaU6hSmQv_nVobCna6vhZj3sjQIzEOZNcpcdlPPbBRdBDpQquzQuMfsHDLZ77_3AhpjqidLVnoVrGQKJjdwB_EGb5xxBCciQcIRR6dltqDujTrPu1-QwyxY27xwjDIhg_ycYMdVnlG1I9v73q463tXe3JAuRs4lVPa13s2FS8ErmvFaMTbEUrEwjK3hBlVchOHrsAeiUOlfVIHPikZNB24I601kSFm4XWdnXNPaalJ1q_UKHT5lv8T3ihXxArTNITOPmvLyheWL"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-surface-variant flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+3</div>
+</div>
+<span class="text-on-surface-variant font-label-caps text-[10px]">DUE IN 4 DAYS</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full">
+<div class="flex justify-between items-start mb-lg">
+<div class="p-sm bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">map</span>
+</div>
+<span class="font-label-caps text-[10px] bg-secondary/20 text-secondary px-sm py-xs rounded-full">PLANNING</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-sm">Q3 Roadmap</h3>
+<p class="text-on-surface-variant text-body-md mb-xl flex-1">Strategic alignment of feature sets for the third quarter with a focus on developer experience and API stability.</p>
+<div class="space-y-md">
+<div class="flex justify-between items-end mb-xs">
+<span class="text-on-surface-variant font-label-caps text-[10px]">PROGRESS</span>
+<span class="text-secondary font-label-caps text-[12px]">32%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary neon-glow" style="width: 32%"></div>
+</div>
+<div class="flex justify-between items-center pt-md">
+<div class="flex -space-x-2">
+<img alt="Team 3" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A modern professional male developer with a beard, wearing a casual dark hoodie. He is captured in a high-contrast setting with soft rim lighting that highlights his silhouette against a very dark, obsidian-like background, fitting the high-performance design language of TaskPulse." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqNaN9b119lKtLq8oAxQQYdtHqzvGi5SP2Lh9q2zBzSe9Q1_fLGazJ0AzA9niOrZEJEvVwllWKY3spHxxV-Mp5_EDSsY7UcPh1gDfYDJmusvZmB9pTY_tdXF-biOetJUom2P5sOsxapVo449W1VLzOWj6ert52X0au62aX_SbqcAIzkvwvlAdNg3qPKOUoba2z7wrKPh5pRE-xSCvLQ0bBGB594pB_zz7PctFFNbEuzipbSASzFSYHfp4cTaN4GBKtHBgwX6HpMcd-"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-surface-variant flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+5</div>
+</div>
+<span class="text-on-surface-variant font-label-caps text-[10px]">STARTING AUG 1</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full">
+<div class="flex justify-between items-start mb-lg">
+<div class="p-sm bg-tertiary/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">captive_portal</span>
+</div>
+<span class="font-label-caps text-[10px] bg-tertiary/20 text-tertiary px-sm py-xs rounded-full">STAGING</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-sm">Client Portal</h3>
+<p class="text-on-surface-variant text-body-md mb-xl flex-1">A secure, glass-themed interface for enterprise clients to monitor their infrastructure and service health logs.</p>
+<div class="space-y-md">
+<div class="flex justify-between items-end mb-xs">
+<span class="text-on-surface-variant font-label-caps text-[10px]">PROGRESS</span>
+<span class="text-tertiary font-label-caps text-[12px]">91%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container neon-glow" style="width: 91%"></div>
+</div>
+<div class="flex justify-between items-center pt-md">
+<div class="flex -space-x-2">
+<img alt="Team 4" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A portrait of a tech-savvy woman looking focused and determined. She has glasses and is illuminated by the cool glow of a computer screen, which casts a blue light on one side of her face. The environment is dark and professional, embodying a futuristic and precise aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8lcT-U97vAIMnbmq0bzFp6IsCsso1njRiWXQeyujvlZ3meWI9rhfNRDV57H8oHsaQuBzcceSH6bROlaKm1rf6E9D0W6BbKBuWXzyAiOKk6tIEs2BI5ajeS4DXW6W5zAkSbI62-Eay7RL8pOQy2fkQyUPxmSdyjqueABSmL2jFxLvvZkboiJJly9WX54VLINbT3BJe3yyLiB6oUxjOa6Z_78M0LBKxm0UIeJJucaRY5moanTUYLIX3A9TwiMID5B-lHNveScCxozz-"/>
+<img alt="Team 5" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A portrait of a male product manager in a minimalist black turtleneck. He is set against a backdrop of deep shadows with a single, sharp light source from the side, creating a high-prestige, luxury consumer electronics vibe that matches the Obsidian design theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfiDkwwXvG1SYZ4YAQjBVYSd3mS93TsXdvBmSr_QEMc0YP0sTQx1YOH-tyxX5Vh8h17qGWC9MS7WswMgOmoSs97TkyIdJbFrsQ0nkUdPcXfCrMismv-IvK2g1RSwdBdf7ge3kPx2qh68_5zSf2MkY0NCcWlgI1HbOpuTqMv2jF8toh590fyQxFCNwgPtmvzXMWY2nUsp9x7tuNBYAW3ETFnLBKDTp5ZlDWwbTDBV7QBbcZBYZOXj30y-6MV-DxiefVUofm2WOzRaz"/>
+</div>
+<span class="text-on-surface-variant font-label-caps text-[10px]">FINAL REVIEW</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full">
+<div class="flex justify-between items-start mb-lg">
+<div class="p-sm bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">database</span>
+</div>
+<span class="font-label-caps text-[10px] bg-primary/20 text-primary px-sm py-xs rounded-full">ACTIVE</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-sm">Log Pipeline</h3>
+<p class="text-on-surface-variant text-body-md mb-xl flex-1">Refactoring the data ingestion layer to handle 100k events per second with sub-millisecond latency.</p>
+<div class="space-y-md">
+<div class="flex justify-between items-end mb-xs">
+<span class="text-on-surface-variant font-label-caps text-[10px]">PROGRESS</span>
+<span class="text-primary font-label-caps text-[12px]">48%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full primary-gradient neon-glow" style="width: 48%"></div>
+</div>
+<div class="flex justify-between items-center pt-md">
+<div class="flex -space-x-2">
+<img alt="Team 6" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A close-up shot of a professional woman with a calm and intelligent look. She is wearing a modern blazer and is lit with soft, diffused lighting that highlights the texture of her skin and the clarity of her eyes. The background is a dark, sleek office space with blurred light trails." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXCfqPIkPVYiVy7wAi9h2Q67MGd4ekwmW-ApeSPcOn5i6rhBBk8VRRUghj-C06d8WvJhQZTqFoEhAiHBfkQXkr4vHOAzHUyDZTontAK_LbGzlHltpwU8OBhsiaYUqgrCoApr7xPNnBhz4KpAJHDw1rN86XSvs8XLeHj6S9iKmwWTXg2jOR4ecSieiurWnwRlEiAho6fF6iaXfIsva5ztqeExi0yqr1jxMHGXeq2nB6Tu9s9x88MNT9RCYKViKK1WW2i1usKw4EctnQ"/>
+</div>
+<span class="text-on-surface-variant font-label-caps text-[10px]">DUE IN 12 DAYS</span>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full">
+<div class="flex justify-between items-start mb-lg">
+<div class="p-sm bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<span class="font-label-caps text-[10px] bg-secondary/20 text-secondary px-sm py-xs rounded-full">PLANNING</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-sm">Vault v2</h3>
+<p class="text-on-surface-variant text-body-md mb-xl flex-1">End-to-end encryption upgrade for all stored secrets and sensitive environmental variables.</p>
+<div class="space-y-md">
+<div class="flex justify-between items-end mb-xs">
+<span class="text-on-surface-variant font-label-caps text-[10px]">PROGRESS</span>
+<span class="text-secondary font-label-caps text-[12px]">15%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary neon-glow" style="width: 15%"></div>
+</div>
+<div class="flex justify-between items-center pt-md">
+<div class="flex -space-x-2">
+<img alt="Team 7" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A portrait of a male lead developer with a sharp and professional look. He is dressed in a minimalist, high-quality fabric shirt. The lighting is low-key with subtle highlights, set in a sophisticated, dark environment with blurred technology motifs in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsaHzp-fP-2TBSi4wXBFSkLuESxOPgSGIz6oyOr0Qh10_ng509s89_vRQhoebqmTPbU30fcXhnMWnm16Yp8B5VS7g87FOmhxQCZNJVlB6wTxf4I35IbUbD8P_WRn6RLB0mwcptekt0M0C2bTBRkaezZhKZ5tB7iBooQ0D7Ykx-Mo_o18-ztdGZTTvajkdHry_ESWdFzgdhnYBK1qEKvBamNNoQNaRs7JdSySg4TCeDwWGTxVHOiPMcFaduSHp0M01LaH655-znmba5"/>
+<img alt="Team 8" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="A portrait of a highly skilled female engineer with a professional yet approachable demeanor. She is framed in a close-up against a backdrop of deep blues and blacks. The lighting creates a high-contrast, premium feel that matches the obsidian-like surfaces of the design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOIUSYWIbVqMDTsHKI53le8jNY-J_ngLpPuWIhqQ0DZAC_M0LX4Wout-wPInAI59UM6skvhaodqZLyBR0ZMj7gzeKgbBCn7Tgvy07lszdAlP7ypPM1moV1Rkkjdxd98ToFyxyH0U4eyITHpUUEUMYbHLHLy1ZKs_dVLbay8YcADyohYgavLsf95wPxnCVc5qCUK56k0BmOk3l0kZxdz2iUv62hlucoET9G0mb7epwtw7jkOB9kxFz0TaYLolXwjZamfJjmOXd0FCTc"/>
+</div>
+<span class="text-on-surface-variant font-label-caps text-[10px]">EST. 3 MONTHS</span>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full border-dashed border-white/20 hover:border-primary/50 group cursor-pointer bg-white/2">
+<div class="flex-1 flex flex-col items-center justify-center text-center p-xl">
+<div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-md group-hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-all">add_circle</span>
+</div>
+<h3 class="font-headline-md text-on-surface mb-sm">Create New Project</h3>
+<p class="text-on-surface-variant text-body-md">Instantiate a new workspace with our pre-built enterprise templates.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Shell -->
+<footer class="mt-auto bg-surface-container-lowest border-t border-white/5 py-xxl">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg max-w-container-max mx-auto px-gutter">
+<div class="col-span-1 md:col-span-1">
+<div class="font-label-caps text-body-lg text-on-surface font-bold mb-md">TaskPulse</div>
+<p class="text-on-surface-variant text-body-md opacity-80 hover:opacity-100 transition-opacity">© 2024 TaskPulse AI. Built for high-performance teams.</p>
+</div>
+<div>
+<div class="font-label-caps text-xs text-primary mb-md">PLATFORM</div>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Features</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Security</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">API</a></li>
+</ul>
+</div>
+<div>
+<div class="font-label-caps text-xs text-primary mb-md">LEGAL</div>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Privacy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Terms</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Status</a></li>
+</ul>
+</div>
+<div class="text-right">
+<div class="font-label-caps text-xs text-primary mb-md">SYSTEM HEALTH</div>
+<div class="flex items-center justify-end gap-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-500 neon-glow"></span>
+<span class="text-body-md text-on-surface">All Systems Operational</span>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</body></html>
